@@ -25,9 +25,15 @@ const WorkExperience = ()=>{
             const CompanyNameRegrex= /^[A-Za-z0-9\s.,&()-]+$/;
             const DateOfJoiningRegrex=/^\d{4}-\d{2}-\d{2}$/;
             const ExperienceRegex = /^(?:[0-9]|[1-4][0-9]|50)(?:\.[0-9])?$/;
+            const newError ={
+            companyName:"",
+            yearsOfExperience:"",
+            dateOfJoining:""       
+            }
             
             if(!data.companyName.trim){
                 
+
             }
 
         }
