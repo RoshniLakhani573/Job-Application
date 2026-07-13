@@ -22,6 +22,11 @@ const PersonalInfo = ()=>{
             ...data,
             [e.target.name]:e.target.value
         })
+
+        setError({
+            ...error,
+            [e.target.name]:""
+        })
     }
 
     const handleSubmit=(e)=>{
@@ -40,41 +45,42 @@ const PersonalInfo = ()=>{
         }
         // Name
         if (!data.name.trim()){
-            newError.name = "name is required"
+            newError.name = "name is required";
         }else if (!NameRegex.test(data.name)){
-            newError.name = "Name is not valid"
+            newError.name = "Name is not valid";
         }
 
         // Email
         if(!data.email.trim()){
-            newError.email = "email is required"
+            newError.email = "email is required";
         }else if(!EmailRegex.test(data.email)){
-            newError.email = "Email is not valid"
+            newError.email = "Email is not valid";
         }
 
         // Mobile
         if(!data.mobile.trim()){
-            newError.mobile = "mobile is required"
+            newError.mobile = "mobile is required";
         }else if (!MobileRegex.test(data.mobile)){
-            newError.mobile = "number is not valid"
+            newError.mobile = "number is not valid";
         }
 
         // password
         if (!data.password.trim()){
-            newError.password = "password is required"
+            newError.password = "password is required";
         }else if (!PasswordRegex.test(data.password)){
-            newError.password = "password is not valid"
+            newError.password = "password is not valid";
         }
 
-        if(!data.name|| !data.email|| !data.mobile|| !data.password){
+        if(newError.name|| newError.email|| newError.mobile|| newError.password){
+            setError(newError)
             return;
         }
-        setError(newError)
+       
 
         localStorage.setItem("data",JSON.stringify(data))
         
         console.log(data);
-        navigate('education')
+        navigate('/education')
 
         
 
@@ -92,6 +98,10 @@ const PersonalInfo = ()=>{
               onChange={handleChange}
               
               /><br/>
+              {error.name && (
+  <p style={{ color: "red" }}>{error.name}</p>
+)}
+              {/* {error.name}&&<p>{error.name}</p><br/> */}
 
             <label>Email</label>
             <input 
@@ -100,15 +110,20 @@ const PersonalInfo = ()=>{
               value = {data.email}
               placeholder="Enter Your Email "
               onChange={handleChange}
-              /><br/>
+              />{error.email && (
+  <p style={{ color: "red" }}>{error.email}</p>
+)}<br/>
               <label>Mobile</label>
                 <input 
-              type = "mobile"
+              type = "tel"
               name = "mobile"
               value = {data.mobile}
               placeholder="Enter Your number "
               onChange={handleChange}
-              /><br/>
+              />
+              {error.mobile && (
+  <p style={{ color: "red" }}>  {error.mobile}</p>
+)}<br/>
 
               <label>Password</label>
                 <input 
@@ -117,7 +132,10 @@ const PersonalInfo = ()=>{
               value = {data.password}
               placeholder="Enter Your password "
               onChange={handleChange}
-              /><br/>
+              />
+              {error.password && (
+  <p style={{ color: "red" }}>{error.password}</p>
+)}<br/>
               <button type="submit">Next Page</button>
         </form>
         
