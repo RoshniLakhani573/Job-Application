@@ -49,7 +49,8 @@ const WorkExperience = ()=>{
                 newError.yearsOfExperience= "enter valid year of experience"
             }
 
-            if (!data.companyName||!data.dateOfJoining||!data.yearsOfExperience){
+            if (newError.companyName||newError.dateOfJoining||newError.yearsOfExperience){
+                setError(newError)
                 return;
             }
             localStorage.setItem("data",JSON.stringify(data))
@@ -68,6 +69,7 @@ const WorkExperience = ()=>{
             <input/> 
             <label>Date of Joining</label>
             <input/>
+            <button type="submit">Next</button>
         </form>
         </div>)
 

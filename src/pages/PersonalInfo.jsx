@@ -64,7 +64,7 @@ const PersonalInfo = ()=>{
             newError.mobile = "number is not valid";
         }
 
-        // password
+        // passwor
         if (!data.password.trim()){
             newError.password = "password is required";
         }else if (!PasswordRegex.test(data.password)){
