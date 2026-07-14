@@ -19,6 +19,10 @@ const WorkExperience = ()=>{
             ...data,
             [e.target.name]:e.target.value
         })
+        setError({
+            ...error,
+            [e.target.name]:""
+        })
         }
         const handleSubmit = (e)=>{
             e.preventDefault();
@@ -60,15 +64,30 @@ const WorkExperience = ()=>{
         }
     
     return(<div>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>Current Company Name</label>
             <input 
             type="text"
-            name=""/>
+            name="companyName"
+            value={data.companyName}
+            onChange={handleChange}/>
+            {error.companyName &&(<p style={{color:red}} >{error.companyName}</p>)}
             <label>Year of Experence </label>
-            <input/> 
+            <input 
+            type="number"
+            name="yearsOfExperience"
+            value={data.yearsOfExperience}
+            onChange={handleChange}/>
+            {error.yearsOfExperience &&(<p style={{color:red}} >{error.yearsOfExperience}</p>)}
+            
             <label>Date of Joining</label>
-            <input/>
+            <input
+            type="date"
+            name="dateOfJoining"
+            value={data.dateOfJoining}
+            onChange={handleChange}/>
+            {error.yearsOfExperience &&(<p style={{color:red}} >{error.yearsOfExperience}</p>)}
+
             <button type="submit">Next</button>
         </form>
         </div>)

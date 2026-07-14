@@ -94,7 +94,7 @@ const Education =()=>{
                 <br/>
                 <label>Passing Date</label>
                 <input
-                type = "text"
+                type = "date"
                 name="passIntermediateDate"
                 value={data.passIntermediateDate}
                 onChange={handleChange}/>
@@ -112,7 +112,7 @@ const Education =()=>{
                 {error.graduation && (<p style={{color:"red"}}>{error.graduation}</p>)}
                 <label>Passing Date</label>
                 <input
-                type = "text"
+                type = "date"
                 name="passGraduationDate"
                 value={data.passGraduationDate}
                 onChange={handleChange}/>
