@@ -6,13 +6,19 @@ const WorkExperience = ()=>{
     const [data,setData]= useState({
         companyName:"",
         yearsOfExperience:"",
-        dateOfJoining:""
+        dateOfJoining:"",
+        preCompanyName:"",
+        pyearsOfExperience:"",
+        pdateOfJoining:""
     })
 
     const [error,setError] = useState({
         companyName:"",
         yearsOfExperience:"",
-        dateOfJoining:""       
+        dateOfJoining:"",
+        preCompanyName:"",
+        pyearsOfExperience:"",
+        pdateOfJoining:""       
     })
     const handleChange =(e)=>{
         setData({
@@ -32,8 +38,13 @@ const WorkExperience = ()=>{
             const newError ={
             companyName:"",
             yearsOfExperience:"",
-            dateOfJoining:""       
+            dateOfJoining:"",
+            preCompanyName:"",
+            pyearsOfExperience:"",
+            pdateOfJoining:""              
             }
+        
+           
             
             if(!data.companyName.trim){
                 newError.companyName= "field is empty"
@@ -53,18 +64,23 @@ const WorkExperience = ()=>{
                 newError.yearsOfExperience= "enter valid year of experience"
             }
 
+
             if (newError.companyName||newError.dateOfJoining||newError.yearsOfExperience){
                 setError(newError)
                 return;
             }
-            localStorage.setItem("data",JSON.stringify(data))
-            navigate('/review')
+            localStorage.setItem("workExperience",JSON.stringify(data))
+            console.log(data)
+            navigate("/review")
 
            
-        }
+            }
     
-    return(<div>
-        <form onSubmit={handleSubmit}>
+    return(
+    <div className="page">
+        <form className="form-container" onSubmit={handleSubmit}>
+            <h1 className="review-title">Work Experience</h1>
+            <div className="form-group">
             <label>Current Company Name</label>
             <input 
             type="text"
@@ -72,6 +88,8 @@ const WorkExperience = ()=>{
             value={data.companyName}
             onChange={handleChange}/>
             {error.companyName &&(<p style={{color:red}} >{error.companyName}</p>)}
+            </div>
+            <div className="form-group">
             <label>Year of Experence </label>
             <input 
             type="number"
@@ -79,7 +97,9 @@ const WorkExperience = ()=>{
             value={data.yearsOfExperience}
             onChange={handleChange}/>
             {error.yearsOfExperience &&(<p style={{color:red}} >{error.yearsOfExperience}</p>)}
-            
+            </div>
+
+            <div className="form-group">
             <label>Date of Joining</label>
             <input
             type="date"
@@ -87,6 +107,38 @@ const WorkExperience = ()=>{
             value={data.dateOfJoining}
             onChange={handleChange}/>
             {error.yearsOfExperience &&(<p style={{color:red}} >{error.yearsOfExperience}</p>)}
+            </div>
+
+
+
+            <div className="form-group">
+            <label>Company Name</label>
+            <input 
+            type="text"
+            name="preCompanyName"
+            value={data.preCompanyName}
+            onChange={handleChange}/>
+            {error.preCompanyName &&(<p style={{color:red}} >{error.preCompanyName}</p>)}
+            </div>
+            <div className="form-group">
+            <label>Year of Experence </label>
+            <input 
+            type="number"
+            name="pyearsOfExperience"
+            value={data.pyearsOfExperience}
+            onChange={handleChange}/>
+            {error.pyearsOfExperience &&(<p style={{color:red}} >{error.pyearsOfExperience}</p>)}
+            </div>
+
+            <div className="form-group">
+            <label>Date of Joining</label>
+            <input
+            type="date"
+            name="pdateOfJoining"
+            value={data.pdateOfJoining}
+            onChange={handleChange}/>
+            {error.pdateOfJoining &&(<p style={{color:red}} >{error.pdateOfJoining}</p>)}
+            </div>
 
             <button type="submit">Next</button>
         </form>

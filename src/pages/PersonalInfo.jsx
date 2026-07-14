@@ -77,7 +77,7 @@ const PersonalInfo = ()=>{
         }
        
 
-        localStorage.setItem("data",JSON.stringify(data))
+        localStorage.setItem("personalInfo",JSON.stringify(data))
         
         console.log(data);
         navigate('/education')
@@ -88,8 +88,11 @@ const PersonalInfo = ()=>{
     
         
     return (
-        <form onSubmit={handleSubmit}>
-            <label>Name</label>
+        <div className="page">
+        <form className="form-container" onSubmit={handleSubmit}>
+            <h1 className="review-title">Personal Information</h1>
+            <div className="form-group">
+            <label><h2>Name</h2></label>
             <input 
               type = "text"
               name = "name"
@@ -100,9 +103,9 @@ const PersonalInfo = ()=>{
               /><br/>
               {error.name && (
                 <p style={{ color: "red" }}>{error.name}</p>)}
-              
-
-            <label>Email</label>
+              </div>
+            <div className="form-group">
+            <label><h2>Email</h2></label>
             <input 
               type = "email"
               name = "email"
@@ -112,7 +115,9 @@ const PersonalInfo = ()=>{
               />{error.email && (
             <p style={{ color: "red" }}>{error.email}</p>
             )}<br/>
-              <label>Mobile</label>
+            </div>
+                <div className="form-group">            
+              <label><h2>Mobile</h2></label>
                 <input 
               type = "tel"
               name = "mobile"
@@ -123,8 +128,9 @@ const PersonalInfo = ()=>{
               {error.mobile && (
             <p style={{ color: "red" }}>  {error.mobile}</p>
             )}<br/>
-
-              <label>Password</label>
+            </div>
+            <div className="form-group">
+              <label><h2>Password</h2></label>
                 <input 
               type = "password"
               name = "password"
@@ -135,8 +141,10 @@ const PersonalInfo = ()=>{
               {error.password && (
                 <p style={{ color: "red" }}>{error.password}</p>
                 )}<br/>
+                </div>
               <button type="submit">Next Page</button>
         </form>
+        </div>
         
     )
 }

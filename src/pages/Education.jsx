@@ -72,7 +72,7 @@ const Education =()=>{
            setError(newError)
             return;
         }
-        localStorage.setItem("data",JSON.stringify(data));
+        localStorage.setItem("education",JSON.stringify(data));
         console.log(data)
         navigate('/workexperience')
         
@@ -80,9 +80,11 @@ const Education =()=>{
 
     
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>College Name(Intermediate)</label>
+        <div className="page">
+            <form className="form-container" onSubmit={handleSubmit}>
+                <h1 className="review-title">Education Information</h1>
+                <div className="form-group">
+               <label>College Name(Intermediate)</label>
                 <input
                 type = "text"
                 name = "intermediate"
@@ -92,6 +94,8 @@ const Education =()=>{
                 <p style={{ color: "red" }}>{error.intermediate}</p>)}
               
                 <br/>
+                </div>
+                <div className="form-group">
                 <label>Passing Date</label>
                 <input
                 type = "date"
@@ -102,6 +106,8 @@ const Education =()=>{
                     <p style={{color:"red"}}>{error.passIntermediateDate}</p>
                 )}
                 <br/>
+                </div>
+                <div className="form-group">
                  <label>College Name</label>
                 <input
                 type = "text"
@@ -110,6 +116,8 @@ const Education =()=>{
                 onChange={handleChange} />
                 <br/>
                 {error.graduation && (<p style={{color:"red"}}>{error.graduation}</p>)}
+                </div>
+                <div className="form-group">
                 <label>Passing Date</label>
                 <input
                 type = "date"
@@ -117,7 +125,7 @@ const Education =()=>{
                 value={data.passGraduationDate}
                 onChange={handleChange}/>
                 {error.passGraduationDate &&(<p style={{color:"red"}}>{error.passGraduationDate}</p>)}
-   
+                </div>
                 <button type="submit">Next</button>
             </form>
         </div>
